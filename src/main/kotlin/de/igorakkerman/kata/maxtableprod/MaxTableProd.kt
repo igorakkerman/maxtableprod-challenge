@@ -38,7 +38,7 @@ class MaxTableProd(val prodSize: Int, numbersString: String) {
     internal fun maxHorizontalProd(): Int {
         var maxProd = 0
         for (i in (0 until height)) {
-            for (j in (0..width - prodSize)) {
+            for (j in (0 .. width - prodSize)) {
                 maxProd = max(maxProd, (0 until prodSize).map { numbers[i][j + it] }.reduce { x, y -> x * y })
             }
         }
@@ -48,7 +48,7 @@ class MaxTableProd(val prodSize: Int, numbersString: String) {
     internal fun maxVerticalProd(): Int {
         var maxProd = 0
         for (j in (0 until width)) {
-            for (i in (0..height - prodSize)) {
+            for (i in (0 .. height - prodSize)) {
                 maxProd = max(maxProd, (0 until prodSize).map { numbers[i + it][j] }.reduce { x, y -> x * y })
             }
         }
@@ -56,17 +56,19 @@ class MaxTableProd(val prodSize: Int, numbersString: String) {
     }
 
     internal fun maxDiagonalLeftProd(): Int {
-        return (prodSize - 1 until height).flatMap { i ->
-            (prodSize - 1 until width).map { j ->
-                (0 until prodSize).map { numbers[i - it][j - it] }.reduce { x, y -> x * y }
+        var maxProd = 0
+        for (i in (prodSize - 1 until height)) {
+            for (j in (prodSize - 1 until width)) {
+                maxProd = max(maxProd, (0 until prodSize).map { numbers[i - it][j - it] }.reduce { x, y -> x * y })
             }
-        }.reduce { x, y -> max(x, y) }
+        }
+        return maxProd
     }
 
     internal fun maxDiagonalRightProd(): Int {
         var maxProd = 0
         for (i in (prodSize - 1 until height)) {
-            for (j in (0..width - prodSize)) {
+            for (j in (0 .. width - prodSize)) {
                 val fn = { k: Int -> numbers[i - k][j + k] }
                 maxProd = max(maxProd, (0 until prodSize).map(fn).reduce { x, y -> x * y })
             }
