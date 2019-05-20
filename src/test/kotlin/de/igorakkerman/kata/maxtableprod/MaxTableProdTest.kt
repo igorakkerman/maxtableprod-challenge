@@ -56,7 +56,7 @@ internal class MaxTableProdTest {
     }
 
     @Test
-    fun bigTable() {
+    fun `19x20, 4`() {
         val maxTableProd = MaxTableProd(4, """
                 97 91 11 86 27 04 99 29 99 64 92 94 96 67 41 01 49 66 80
                 28 28 88 29 06 70 07 46 59 76 06 29 87 22 58 27 92 45 51
