@@ -56,6 +56,19 @@ internal class MaxTableProdTest {
     }
 
     @Test
+    fun `3x2, 2`() {
+        val maxTableProd = MaxTableProd(2, """
+                97 28 77
+                91 42 12
+        """)
+
+        assertThat(maxTableProd.maxHorizontalProd()).isEqualTo(91*42)
+        assertThat(maxTableProd.maxVerticalProd()).isEqualTo(97*91)
+        assertThat(maxTableProd.maxDiagonalLeftProd()).isEqualTo(97*42)
+        assertThat(maxTableProd.maxDiagonalRightProd()).isEqualTo(42*77)
+    }
+
+    @Test
     fun `19x20, 4`() {
         val maxTableProd = MaxTableProd(4, """
                 97 91 11 86 27 04 99 29 99 64 92 94 96 67 41 01 49 66 80
