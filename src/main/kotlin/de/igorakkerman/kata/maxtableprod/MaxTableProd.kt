@@ -2,14 +2,14 @@ package de.igorakkerman.kata.maxtableprod
 
 import java.lang.Integer.max
 
-class MaxTableProd(val prodSize: Int, numbersString: String) {
+class MaxTableProd(val prodSize: Int, numbersTable: String) {
 
     val numbers: List<List<Int>>
     val width: Int
     val height: Int
 
     init {
-        numbers = numbersString
+        numbers = numbersTable
                 .lines()
                 .map { it.trim() }
                 .filter { it.isNotEmpty() }
